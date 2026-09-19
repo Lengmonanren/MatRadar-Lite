@@ -1,0 +1,12 @@
+# Only explicitly reviewed release files belong here.
+node_modules/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.sqlite
+*.db
+*.log
+.env*
+*.map
+.DS_Store
+Thumbs.db

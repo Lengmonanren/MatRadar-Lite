@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="MatRadar Lite 半导体封装材料产业研究雷达：市场表现、产业数据与周度研究结论。">
+  <title>MatRadar Lite · 半导体封装材料产业研究雷达</title>
+  <link rel="stylesheet" href="assets/style.css">
+  <script defer src="assets/plotly.min.js"></script><script defer src="assets/xlsx.full.min.js"></script><script defer src="data/research_snapshot.js"></script><script defer src="assets/excel-analysis.js"></script><script defer src="assets/app.js"></script>
+</head>
+<body>
+<header class="masthead"><div class="brand"><span class="brand-mark" aria-hidden="true">M<span>R</span></span><span>MatRadar <b>Lite</b></span></div><span class="edition">SAMPLE · 虚构演示</span></header>
+<main>
+ <div class="intro"><div><p class="eyebrow">从数据变化，到产业判断</p><h1>半导体封装材料产业研究雷达</h1><p class="description">将分散的产业研究数据转换为图表、Signal与结构化研究判断。</p></div><div class="datestamp">数据截止<strong id="cutoff"></strong><span>各指标观察日分别标注</span></div></div>
+ <p class="public-notice"><strong>SAMPLE · 全部图表与数值均为虚构演示，不代表真实行情。</strong><br>上传的Excel仅在浏览器本地解析，不上传服务器。</p>
+ <details class="data-controls"><summary>数据 <span id="dataset-label">历史案例（SAMPLE）</span></summary><div class="data-body">
+  <div class="data-row"><label for="data-mode">数据模式</label><select id="data-mode"><option value="history">历史案例（SAMPLE）</option><option value="upload">上传 Excel</option></select><button id="export-analysis" type="button">导出分析数据</button></div>
+  <div id="upload-controls" hidden>
+   <p class="privacy">Excel仅在浏览器本地解析，数据不会上传或保存至服务器。刷新页面即清除上传内容。</p>
+   <div class="data-row"><label for="excel-file">选择Excel文件</label><input id="excel-file" type="file" accept=".xlsx,.xls"><a href="MatRadar_Input_Template.xlsx" download>下载数据模板</a><span class="caption">模板含 SAMPLE 虚构样例，请替换后使用。</span></div>
+   <div class="data-row"><label for="analysis-date">分析日期</label><input id="analysis-date" type="date" disabled><button type="button" data-quick="latest" disabled>最新</button><button type="button" data-quick="week" disabled>上周</button><button type="button" data-quick="month" disabled>上月</button><button id="generate-analysis" type="button" disabled>生成分析</button></div>
+   <p id="processing-status" role="status" aria-live="polite">请选择Excel文件。</p><details id="validation-details" hidden><summary>数据检查说明</summary><p id="validation-summary"></p><ul id="validation-issues"></ul></details>
+  </div>
+ </div></details>
+ <nav aria-label="研究卡片"><button data-panel="market" aria-selected="true">01 <span>市场表现</span></button><button data-panel="industry" aria-selected="false">02 <span>产业数据</span></button><button data-panel="conclusion" aria-selected="false">03 <span>研究结论</span></button></nav>
+ <section id="market" class="panel" aria-label="市场表现">
+  <div class="section-heading"><div><p class="eyebrow">01 / 市场表现</p><h2>半导体与材料板块运行情况</h2></div><span class="tag">最近 12 个月</span></div>
+  <div id="market-kpis" class="kpi-grid"></div>
+  <div class="chart-heading"><h3>半导体板块相对表现</h3><span>共同区间起点 = 100</span></div><div id="market-chart" class="chart" aria-label="三个半导体指数的归一化折线图"></div>
+  <p class="caption" id="market-caption"></p>
+  <div class="analysis"><h3>市场解读</h3><p id="market-analysis"></p></div>
+ </section>
+ <section id="industry" class="panel" aria-label="产业数据" hidden>
+  <div class="section-heading"><div><p class="eyebrow">02 / 产业数据</p><h2>存储价格与封装材料高频跟踪</h2></div><span class="tag">三个研究切面</span></div>
+  <article class="module"><div class="module-heading"><span class="module-letter">A</span><div><h3>存储价格观察</h3><p>DXI 与 DRAM · 比较方向及累计变化</p></div></div><div id="memory-kpis" class="kpi-grid two"></div><div id="memory-chart" class="chart compact" aria-label="DXI和DRAM起点100比较图"></div><p class="caption" id="memory-caption"></p><div class="analysis"><h3>价格解读</h3><p id="memory-analysis"></p></div></article>
+  <article class="module"><div class="module-heading"><span class="module-letter">B</span><div><h3>NAND 现货价格</h3><p>64Gb MLC · 美元</p></div></div><div id="nand-kpis" class="kpi-grid"></div><div id="nand-chart" class="chart compact" aria-label="NAND美元现货价格折线图"></div><p class="caption">仅显示有效观察，不延伸报价。</p><div class="analysis"><h3>趋势解读</h3><p id="nand-analysis"></p></div></article>
+  <article class="module"><div class="module-heading"><span class="module-letter">C</span><div><h3>半导体封装材料进出口</h3><p>示例商品范围 · 万美元</p></div></div><div id="trade-kpis" class="kpi-grid two"></div><div class="trade-charts"><div><h4>进口金额</h4><div id="import-chart" class="chart small" aria-label="进口金额月度折线图"></div></div><div><h4>出口金额</h4><div id="export-chart" class="chart small" aria-label="出口金额月度折线图"></div></div></div><p class="caption">两个图使用各自纵轴范围，均以万美元计量；不通过线条高度比较进出口规模。</p><div class="analysis"><h3>贸易解读</h3><p id="trade-analysis"></p></div></article>
+ </section>
+ <section id="conclusion" class="panel" aria-label="研究结论" hidden>
+  <div class="section-heading"><div><p class="eyebrow">03 / 研究结论</p><h2>基于市场与产业数据的周度研究摘要</h2></div><span class="tag">审慎推导 · 持续验证</span></div>
+  <h3>本期核心变化</h3><ol id="changes" class="changes"></ol>
+  <div class="research-view"><p class="eyebrow">本期观点</p><h3>研究判断</h3><p id="weekly-view"></p></div>
+  <div class="followup"><h3>后续关注</h3><ol id="followups"></ol></div>
+  <div class="risk"><strong>风险提示</strong><p id="risks"></p></div>
+  <details class="evidence"><summary>查看研究依据</summary><div class="evidence-body"><h4>数据来源</h4><ul id="sources"></ul><h4>数据截止日期</h4><p>各指标日期以演示快照为准。</p><h4>关键变化</h4><p id="signals"></p><h4>判断边界</h4><ul id="boundaries"></ul><details><summary>技术审计信息</summary><ul id="methodology"></ul><div class="table-scroll"><table><caption>计算指标复核</caption><thead><tr><th>指标</th><th>近4周</th><th>近3月</th><th>距3月高点</th><th>距3月低点</th><th>最近观察</th><th>周变化速度</th></tr></thead><tbody id="audit-metrics"></tbody></table></div><p id="ranking"></p></details></div></details>
+ </section>
+ <footer><span>MatRadar Lite · 公开演示</span><span>资料整理与研究观察，不构成投资建议</span></footer>
+</main><noscript>请启用 JavaScript 以浏览图表和研究快照。</noscript>
+</body></html>

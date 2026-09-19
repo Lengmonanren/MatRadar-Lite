@@ -6,7 +6,7 @@ A lightweight signal-and-evidence driven research tool for semiconductor packagi
 
 将原本分散在 Excel、金融终端与产业研究资料中的周度研究工作流产品化，通过数据标准化、规则识别与研究模板，自动生成图表和结构化研究解读。
 
-**发布状态：本地公开版本已准备，GitHub 授权后上线。项目附件正在完成上线前排版，最终版将在真实链接验证后生成。**
+[Live Demo](https://lengmonanren.github.io/MatRadar-Lite/) · [GitHub Repository](https://github.com/Lengmonanren/MatRadar-Lite) · [Project Portfolio PDF](portfolio/MatRadar_Lite_Project_Portfolio.pdf)
 
 ## 1. 项目解决什么问题
 
